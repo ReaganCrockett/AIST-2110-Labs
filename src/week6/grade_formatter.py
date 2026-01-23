@@ -1,4 +1,4 @@
-from typing import Tuple, Union
+from typing import Tuple
 
 
 def grade_format(
@@ -8,7 +8,7 @@ def grade_format(
     decimals: int = 2,
     return_tuple: bool = False,
     show_raw: bool = True,
-) -> Union[str, Tuple[str, str]]:
+) -> str | Tuple[str, str]:
     """
     Format a numeric grade as a percentage string with a letter grade.
 
@@ -69,35 +69,30 @@ def grade_format(
     affects how the value is displayed.
     """
     if decimals < 0:
-        raise ValueError("decimals must be >= 0")
+        raise ValueError('decimals must be >= 0')
 
     if out_of <= 0:
-        raise ValueError("out_of must be > 0")
+        raise ValueError('out_of must be > 0')
 
     if score < 0 or score > out_of:
-        raise ValueError(
-            f"score must be within [0, {out_of}] (got {score})."
-        )
+        raise ValueError(f'score must be within [0, {out_of}] (got {score}).')
 
     percent = (score / out_of) * 100.0
 
     if percent < 0.0 or percent > 100.0:
-        raise ValueError(
-            f"Computed percentage {percent:.4f} is outside [0, 100]. "
-            "Check 'score' and 'out_of'."
-        )
+        raise ValueError(f"Computed percentage {percent:.4f} is outside [0, 100]. Check 'score' and 'out_of'.")
 
     letter = _letter_from_percentage(percent)
 
-    percent_str = f"{_trimmed_float(percent, decimals)}%"
+    percent_str = f'{_trimmed_float(percent, decimals)}%'
     if return_tuple:
         return percent_str, letter
 
-    result = f"{percent_str} ({letter})"
+    result = f'{percent_str} ({letter})'
     if show_raw and out_of != 100.0:
         raw_score = _trimmed_float(score, decimals)
         raw_out_of = _trimmed_float(out_of, decimals)
-        result = f"{result} — raw: {raw_score}/{raw_out_of}"
+        result = f'{result} — raw: {raw_score}/{raw_out_of}'
 
     return result
 
@@ -107,14 +102,14 @@ def _letter_from_percentage(percent: float) -> str:
     Map a percentage to a letter grade using fixed thresholds.
     """
     if 90.0 <= percent <= 100.0:
-        return "A"
+        return 'A'
     if 80.0 <= percent < 90.0:
-        return "B"
+        return 'B'
     if 75.0 <= percent < 80.0:
-        return "C"
+        return 'C'
     if 70.0 <= percent < 75.0:
-        return "D"
-    return "F"
+        return 'D'
+    return 'F'
 
 
 def _trimmed_float(value: float, decimals: int) -> str:
@@ -123,7 +118,7 @@ def _trimmed_float(value: float, decimals: int) -> str:
     or a trailing decimal point.
     """
     rounded = round(value, decimals)
-    text = f"{rounded:.{decimals}f}" if decimals > 0 else f"{int(round(rounded))}"
-    if "." in text:
-        text = text.rstrip("0").rstrip(".")
+    text = f'{rounded:.{decimals}f}' if decimals > 0 else f'{int(round(rounded))}'
+    if '.' in text:
+        text = text.rstrip('0').rstrip('.')
     return text

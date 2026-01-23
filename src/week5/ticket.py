@@ -13,35 +13,35 @@
 # Save the price of the ticket to a price variable, and print the price at the end
 # -Use this format: if the ticket is $50, print in this format: Your ticket price is: $50
 try:
-    age = int(input("Enter your age: "))
+    age = int(input('Enter your age: '))
 except ValueError:
-    print("Invalid input. Please enter a valid age.")
+    print('Invalid input. Please enter a valid age.')
     exit()
 if age < 0:
-    print("Age cannot be negative.")
+    print('Age cannot be negative.')
     exit()
 if age > 120:
-    print("Age seems too high.")
+    print('Age seems too high.')
     exit()
-day = input("Enter day of the week: ").strip().capitalize()
+day = input('Enter day of the week: ').strip().capitalize()
 
 if age < 5:
     price = 0
 elif age < 18:
-    if day == "Wednesday":
+    if day == 'Wednesday':
         price = 5
     else:
         price = 7
 elif age >= 65:
-    if day == "Monday":
+    if day == 'Monday':
         price = 4
     else:
         price = 6
 else:
-    if day == "Tuesday":
+    if day == 'Tuesday':
         price = 8
     else:
         price = 10
 
 
-print(f"Your ticket price is: ${price}")
+print(f'Your ticket price is: ${price}')

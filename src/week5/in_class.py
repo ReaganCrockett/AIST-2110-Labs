@@ -120,37 +120,37 @@
 
 
 try:
-    age = int(input("Enter your age: "))
+    age = int(input('Enter your age: '))
 except ValueError:
-    print("Invalid input. Please enter a valid age.")
+    print('Invalid input. Please enter a valid age.')
     exit()
 
 # Add lower() & strip() example time-provided
-day = input("Enter the day of the week: ")
+day = input('Enter the day of the week: ')
 
 if age < 5:
     price = 0
-    print("toddlers watch for free")
+    print('toddlers watch for free')
 elif age < 18:
-    if day == "wednesday" or day == "Wednesday":
+    if day == 'wednesday' or day == 'Wednesday':
         price = 5
-        print("teen discount day")
+        print('teen discount day')
     else:
         price = 7
 elif age >= 65:
-    if day == "monday" or day == "Monday":
+    if day == 'monday' or day == 'Monday':
         price = 4
-        print("senior Monday special")
+        print('senior Monday special')
     else:
         price = 6
 else:
-    if day == "tuesday" or day == "Tuesday":
+    if day == 'tuesday' or day == 'Tuesday':
         price = 8
-        print("adult Tuesday discount")
+        print('adult Tuesday discount')
     else:
         price = 10
 
-print(f"Your ticket price is: ${price}")
+print(f'Your ticket price is: ${price}')
 
 
 # ## Math Review
@@ -159,13 +159,13 @@ print(f"Your ticket price is: ${price}")
 # Lemonade Stand
 # Reviews +, -, *, / with a tiny real-world scenario.
 
-cups_sold = int(input("Cups sold today: "))
-price_per_cup = float(input("Price per cup ($): "))
+cups_sold = int(input('Cups sold today: '))
+price_per_cup = float(input('Price per cup ($): '))
 
-lemons_cost = float(input("Cost of lemons ($): "))
-sugar_cost = float(input("Cost of sugar ($): "))
-cups_cost = float(input("Cost of cups ($): "))
-stand_fee = float(input("Stand/permit fee ($): "))
+lemons_cost = float(input('Cost of lemons ($): '))
+sugar_cost = float(input('Cost of sugar ($): '))
+cups_cost = float(input('Cost of cups ($): '))
+stand_fee = float(input('Stand/permit fee ($): '))
 
 # *  multiplication: revenue = units * price
 revenue = cups_sold * price_per_cup
@@ -179,11 +179,11 @@ profit = revenue - total_costs
 # /  division: average profit per cup
 avg_profit = profit / cups_sold if cups_sold > 0 else 0.0
 
-print("\n=== Lemonade Stand Summary ===")
-print(f"Revenue:       ${revenue:.2f}")  # Cover .2f formatting
-print(f"Total costs:   ${total_costs:.2f}")
-print(f"Profit:        ${profit:.2f}")
-print(f"Avg per cup:   ${avg_profit:.2f}")
+print('\n=== Lemonade Stand Summary ===')
+print(f'Revenue:       ${revenue:.2f}')  # Cover .2f formatting
+print(f'Total costs:   ${total_costs:.2f}')
+print(f'Profit:        ${profit:.2f}')
+print(f'Avg per cup:   ${avg_profit:.2f}')
 
 
 # Created by Seth Barrett | 2025
