@@ -18,3 +18,6 @@ sync:
 lint: ## Lint with ruff and apply safe auto-fixes
 	$(UV) run $(RUFF) format .
 	$(UV) run $(RUFF) check . --fix
+
+check-out: ## Checks for output cells in Juypter Notebook files
+	$(UV) run tools/check_notebook_outputs.py  --verbose

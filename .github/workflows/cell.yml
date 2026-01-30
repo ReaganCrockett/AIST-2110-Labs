@@ -1,0 +1,20 @@
+name: Cell Output Check
+
+on:
+  pull_request:
+  push:
+    branches: [ main, master ]
+
+jobs:
+  notebook-cleanliness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v3
+
+      - name: Sync dependencies (uv)
+        run: make sync
+
+      - name: Check notebooks have no outputs
+        run: make check-out
